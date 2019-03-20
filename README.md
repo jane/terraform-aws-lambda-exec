@@ -2,7 +2,7 @@ AWS Lambda Exec Module
 ======================
 This module will execute a Lambda function and return its result(s).  It allows Lambdas to be used as a form of Data Source (via a resource) but it also allows them to perform other functions upon e.g. when destroy is called.
 
-There are some very specific constraints on how the Lambda function should work: under the hood it is using a 
+There are some very specific constraints on how the Lambda function should work: under the hood it is using a
 CloudFormation "[CustomResource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html)" to execute the Lambda.
 
 Possible uses include,
@@ -31,6 +31,7 @@ module "execute" {
   source="connect-group/lambda-exec/aws"
   name                = "my_lambda_execution"
   lambda_function_arn = "${data.aws_lambda_function.lambda.arn}"
+  custom_name         = "CreateUUID"
 
   lambda_inputs = {
     ami_tag = "tag"
