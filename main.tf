@@ -16,7 +16,7 @@ resource "aws_cloudformation_stack" "execute_lambda" {
   "Description" : "Execute a Lambda and return the results",
   "Resources": {
     "ExecuteLambda": {
-      "Type": "${join("",["Custom", "::", var.custom_name])}",
+      "Type": "${join("", list("Custom", "::", var.custom_name))}",
       "Properties":
         ${jsonencode(merge(map("ServiceToken",var.lambda_function_arn), var.lambda_inputs))}
     }

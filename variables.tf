@@ -27,3 +27,8 @@ variable "timeout_in_minutes" {
   default     = "5"
   description = "Maximum Time to wait for a response from CloudFormation/Lambda.  The Lambda itself may have its own timeout; this does not override it."
 }
+
+variable "custom_name" {
+  description = "User-defined name used in custom type"
+  default     = "ExecuteLambda"
+}
