@@ -16,13 +16,13 @@ resource "aws_cloudformation_stack" "execute_lambda" {
   "Description" : "Execute a Lambda and return the results",
   "Resources": {
     "ExecuteLambda": {
-      "Type": "Custom::ExecuteLambda",
-      "Properties": 
+      "Type": "${join("",["Custom", "::", var.custom_name])}",
+      "Properties":
         ${jsonencode(merge(map("ServiceToken",var.lambda_function_arn), var.lambda_inputs))}
     }
   },
   "Outputs": {
-    ${join(",", formatlist("\"%s\":{\"Value\": {\"Fn::GetAtt\":[\"ExecuteLambda\", \"%s\"]}}", var.lambda_outputs, var.lambda_outputs))}
+    ${join(",", formatlist("\"%s\":{\"Value\": {\"Fn::GetAtt\":[\"%s\", \"%s\"]}}", var.lambda_outputs, var.custom_name,var.lambda_outputs))}
   }
 }
 EOF
