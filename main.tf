@@ -7,6 +7,7 @@ terraform {
 }
 
 resource "aws_cloudformation_stack" "execute_lambda" {
+  count              = "${var.count}"
   name               = "${var.name}"
   tags               = "${var.tags}"
   timeout_in_minutes = "${var.timeout_in_minutes}"
