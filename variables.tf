@@ -32,3 +32,8 @@ variable "custom_name" {
   description = "User-defined name used in custom type"
   default     = "ExecuteLambda"
 }
+
+variable "count" {
+  description = "Num of resource"
+  default     = 1
+}
