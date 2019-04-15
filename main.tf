@@ -7,6 +7,7 @@ terraform {
 }
 
 resource "aws_cloudformation_stack" "execute_lambda" {
+  depends_on         = "${var.depends_on}"
   count              = "${var.count}"
   name               = "${var.name}"
   tags               = "${var.tags}"

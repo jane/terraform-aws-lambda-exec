@@ -37,3 +37,8 @@ variable "count" {
   description = "Num of resource"
   default     = 1
 }
+
+variable "depends_on" {
+  description = "Resources depends on"
+  default     = []
+}
